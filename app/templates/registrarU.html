@@ -1,0 +1,40 @@
+{% extends './layout.html' %}
+{% block title %}OkCasas - Registrar{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+      <div class="contenido-registro">
+        <div class="titulo-registrar">
+          <h2>¡Registrate en OkCasas!</h2>
+        </div>
+        <div class="registro-usuario">
+          <form id="registro-form" name="registro-form">
+            <ul>
+              <li>
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" pattern="^[A-Za-z]+$" maxlength="45" minlength="3" oninvalid="setCustomValidity('El nombre solo puede contener letras.')"  required/>
+              </li>
+              <li>
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" pattern="^[A-Za-z]+$" maxlength="45" minlength="3" oninvalid="setCustomValidity('El apellido solo puede contener letras.')" required/>
+              </li>
+              <li>
+                <label for="email">Email</label>
+                <input type="email" id="email" oninvalid="setCustomValidity('El email debe contener un formato de: nombre@correo.com.')" required/>
+              </li>
+              <li>
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" minlength="5" maxlength="15" oninvalid="setCustomValidity('La contraseña debe contener al menos 5 caracteres.')" required/>
+              </li>
+              <li class="btn-registro">
+                  <button type="submit">Registrarse</button>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+   <!--SweetAlert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{ url_for('static', filename='js/agregarUsuario.js') }}"></script>
+{% endblock %}

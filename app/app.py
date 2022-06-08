@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, render_template, request
 import cx_Oracle
 from cryptography.fernet import Fernet
+
 
 app = Flask(__name__)
 key = Fernet.generate_key()
@@ -17,9 +18,26 @@ except Exception as e:
     print("No se pudo conectar a la base de datos. Error : " + e)
 
 
-@app.get('/')
+@app.route('/')
 def home():
-    return 'Hello World'
+    return render_template('index.html')
+
+@app.route('/contacto')
+def contacto():
+    return render_template('contacto.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/registrar')
+def registrar():
+    return render_template('registrarU.html')
+
+@app.route('/servicios')
+def servicios():
+    return render_template('servicios.html')
+
 
 
 @app.get('/api/users')

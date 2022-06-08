@@ -1,0 +1,265 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.parent {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  background: rgb(0, 212, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 212, 255, 1) 0%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(2, 0, 36, 1) 100%,
+    rgba(2, 0, 36, 1) 100%
+  );
+  background-attachment: fixed;
+  align-items: center;
+}
+
+nav {
+  color: aliceblue;
+  display: flex;
+  align-items: flex-start;
+}
+
+.carrousel {
+  margin-top: 20px;
+  padding: 10px
+}
+
+.contenido {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.564);
+  margin: 20px;
+}
+
+/*SERVICIO*/
+.contenido-servicios {
+  margin-top: 90px;
+  padding: 50px;
+  color: rgba(255, 255, 255, 0.564);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.titulo-servicios {
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+.servicios {
+  margin-top: 100px;
+  padding: 60px;
+  background-color: rgba(255, 255, 255, 0.564);
+  text-align: center;
+  flex-wrap: wrap;
+}
+.servicios li {
+  list-style: none;
+  text-align: start;
+}
+
+.servicios button {
+  margin-top: 30px;
+  padding: 8px;
+  background-color: rgb(49, 136, 173);
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.664);
+  border-style: none;
+}
+
+.servicios .btn-servicios {
+  text-align: center;
+}
+
+.servicios button:hover {
+  background-color: rgb(16, 40, 50);
+}
+
+/*Registrar Usuario*/
+.contenido-registro {
+  margin-top: 80px;
+  padding: 50px;
+  color: rgba(255, 255, 255, 0.564);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titulo-registrar {
+  font-size: 40px;
+  text-align: center;
+}
+
+.registro-usuario {
+  margin-top: 10px;
+  padding: 60px;
+  background-color: rgba(255, 255, 255, 0.564);
+  flex-wrap: wrap;
+}
+
+.registro-usuario li {
+  list-style: none;
+}
+
+.registro-usuario label {
+  width: 100%;
+  color: rgba(255, 251, 246, 0.872);
+}
+
+.registro-usuario input {
+  width: 100%;
+}
+
+.registro-usuario button {
+  margin-top: 30px;
+  padding: 8px;
+  background-color: rgb(49, 136, 173);
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.664);
+  border-style: none;
+}
+
+.registro-usuario button:hover {
+  background-color: rgb(16, 40, 50);
+}
+
+.registro-usuario .btn-registro {
+  text-align: center;
+}
+
+/* Contacto */
+.contenido-contacto {
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.564);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contacto {
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.564);
+  flex-wrap: wrap;
+}
+
+.contacto li {
+  margin-top: 10px;
+  list-style: none;
+}
+
+.contacto input {
+  background-color: aliceblue;
+  width: 100%;
+  border: none;
+}
+
+.contacto textarea {
+  background-color: aliceblue;
+  width: 100%;
+  resize: none;
+}
+
+.contacto label {
+  width: 30%;
+}
+
+.contacto button {
+  margin-top: 30px;
+  padding: 8px;
+  background-color: rgb(49, 136, 173);
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.564);
+  border-style: none;
+}
+
+.contacto .boton {
+  text-align: center;
+}
+
+.contacto button:hover {
+  background-color: rgb(16, 40, 50);
+}
+
+/*Login*/
+.contenido-login {
+  margin-top: 80px;
+  padding: 50px;
+  color: rgba(255, 255, 255, 0.564);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login {
+  margin-top: 10px;
+  padding: 60px;
+  background-color: rgba(255, 255, 255, 0.564);
+  flex-wrap: wrap;
+}
+
+.login li {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.login input {
+  background-color: aliceblue;
+  width: 100%;
+  border: none;
+}
+
+.login button {
+  margin-top: 30px;
+  padding: 8px;
+  background-color: rgb(49, 136, 173);
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.564);
+  border-style: none;
+}
+
+.login .btn-login {
+  text-align: center;
+}
+.login button:hover {
+  background-color: rgb(16, 40, 50);
+}
+
+.contenido-login i {
+  color: rgb(155, 185, 185);
+  padding: 20px;
+  background-color: rgb(241, 241, 241);
+  border-radius: 50%;
+  font-size: 30px;
+}
+
+.contenido-login .icon-login {
+  text-align: center;
+}
+
+
+@media (max-width: 600px) {
+  body{
+    height: 100vh;
+  }
+  .contenido-contacto{
+    padding: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}

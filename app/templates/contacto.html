@@ -1,0 +1,48 @@
+{% extends './layout.html' %}
+{% block title %}Okcasas - Contacto{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+    <div class="contenido-contacto">
+        <div class="titulo-contacto">
+          <h2>¿En qué podemos ayudarte?</h2>
+        </div>
+        <div class="contacto">
+          <form id="contacto-form" name="contacto-form">
+            <ul>
+              <li>
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" pattern="^[A-Za-z]+$" maxlength="45" minlength="3" oninvalid="setCustomValidity('El nombre solo puede contener letras.')" required/>
+              </li>
+              <li>
+                <label for="apellido">Apellido</label>
+                <input type="text" name="apellido" id="apellido" pattern="^[A-Za-z]+$" maxlength="45" minlength="3" oninvalid="setCustomValidity('El apellido solo puede contener letras.')" required />
+              </li>
+              <li>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required/>
+              </li>
+              <li>
+                <label for="mensaje-contacto">Mensaje</label>
+                <textarea
+                  name="mensaje-contacto"
+                  id="mensaje-contacto"
+                  cols="30"
+                  rows="5"
+                  required
+                ></textarea>
+              </li>
+              <li class="boton">
+                <button type="submit">Enviar</button>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!--SweetAlert-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{ url_for('static', filename='js/agregarContacto.js') }}"></script>
+{% endblock %}

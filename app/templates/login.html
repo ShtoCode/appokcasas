@@ -1,0 +1,33 @@
+{% extends './layout.html' %}
+{% block title %}OkCasas - Login{% endblock %}
+ 
+{% block body %}
+      <div class="contenido-login">
+        <div class="titulo-login">
+          <h2>Iniciar Sesión en OkCasas</h2>
+        </div>
+        <div class="login">
+          <form action="">
+            <ul>
+              <li class="icon-login">
+                <i class="fa-solid fa-user"></i>
+              </li>
+              <li>
+                <label for="email-login">Email</label>
+                <input type="email" name="email-login" id="email-login" maxlength="45" minlength="3" oninvalid="setCustomValidity('El email no puede estar vacio.')" required />
+                </label>
+              </li>
+              <li>
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password" maxlength="45" minlength="5" oninvalid="setCustomValidity('La contraseña no puede estar vacia.')" required />
+              </li>
+              <li class="btn-login">
+                <button type="submit">Iniciar Sesión</button>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
