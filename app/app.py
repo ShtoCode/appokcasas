@@ -6,17 +6,21 @@ from cryptography.fernet import Fernet
 app = Flask(__name__)
 key = Fernet.generate_key()
 
-host = 'localhost'
-user = 'okcasas'
-password = 'okcasas'
-tsname = 'xe'
-
-try:
-    conexion = cx_Oracle.connect(user, password, host+'/'+tsname)
-    print('Conexion establecida!')
-except Exception as e:
-    print("No se pudo conectar a la base de datos. Error : " + e)
-
+def connection():
+    host = 'localhost'
+    port = 1521
+    user = 'okcasas'
+    password = 'okcasas'
+    sid = 'xe' #Cambiar segun sid de oracle (xe - orcl)
+    d = cx_Oracle.makedsn(host, port, sid=sid)
+ 
+    conn = cx_Oracle.connect(
+    user=user,
+    password=password,
+    dsn=d,
+    encoding="UTF-8")
+    return conn
+ 
 
 @app.route('/')
 def home():
@@ -26,9 +30,14 @@ def home():
 def contacto():
     return render_template('contacto.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html')
+    if request.method == 'POST':
+        print(request.form['email-login'])
+        print(request.form['password'])
+        return render_template('login.html')
+    else:
+        return render_template('login.html')
 
 @app.route('/registrar')
 def registrar():
@@ -42,7 +51,7 @@ def servicios():
 
 @app.get('/api/users')
 def get_users():
-    conn = conexion
+    conn = connection()
     cur = conn.cursor()
     cur.execute("SELECT * FROM usuario")
     users = cur.fetchall()
@@ -53,7 +62,7 @@ def get_users():
 
 @app.post('/api/users')
 def create_user():
-    conn = conexion
+    conn = connection()
     cur = conn.cursor()
     new_user = request.get_json()
     nombre = new_user['nombre']
@@ -65,7 +74,6 @@ def create_user():
     cur.callproc(statement, rows)
     conn.commit()
     conn.close()
-
     return ('new_created_user')
 
 
@@ -80,7 +88,7 @@ def delete_user():
 
 @app.get('/api/users/<id>')
 def get_user():
-    conn = conexion
+    conn = connection()
     cur = conn.cursor()
     statement = "SP_LISTAR_USUARIOS"
     cur.execute(statement)

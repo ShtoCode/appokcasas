@@ -1,6 +1,4 @@
-const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 const form = document.getElementById("registro-form");
-
 window.onload = () => {
   form.onsubmit = (e) => {
     e.preventDefault();
@@ -11,7 +9,7 @@ window.onload = () => {
 
     validarForm();
 
-    function validarForm() {
+    async function validarForm() {
       if (nombre.length == 0) {
         swal({
           title: "Error!",
@@ -40,15 +38,29 @@ window.onload = () => {
           icon: "error",
         });
       } else {
-        usuarios.push(nombre, apellido, email, password);
-        const usuarioValue = JSON.stringify(usuarios);
-        localStorage.setItem("usuarios", usuarioValue);
+        const response = await fetch("/api/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nombre,
+            apellido,
+            email,
+            password,
+          }),
+        });
+
+        const data = await response;
+        console.log(data);
+
         swal({
           title: "Usuario registrado!",
           text: "El usuario ha sido registrado con exito.",
-          icon: "success"
+          icon: "success",
         });
       }
     }
+    form.reset();
   };
 };
