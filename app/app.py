@@ -1,11 +1,15 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, redirect, render_template, request, flash, session, url_for
 import cx_Oracle
 from cryptography.fernet import Fernet
+from werkzeug.security import check_password_hash, generate_password_hash
 
+
+import functools
 
 app = Flask(__name__)
 key = Fernet.generate_key()
 
+#Conexion bd
 def connection():
     host = 'localhost'
     port = 1521
@@ -33,8 +37,24 @@ def contacto():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        print(request.form['email-login'])
-        print(request.form['password'])
+        email = request.form['email-login']
+        password = request.form['password']
+        conn = connection()
+        cur = conn.cursor()
+        error = None
+        cur.execute("SELECT * FROM usuario WHERE email = (:1)", [email])
+        usuario = cur.fetchone()
+        print(usuario)
+        if usuario is None:
+            error = "Usuario y/o contraseña incorrecta."
+        elif not check_password_hash(usuario['password'], password):
+            error = "Usuario y/o contraseña incorrecta."
+        
+        if error is None:
+            session.clear()
+            session['user_id'] = usuario['id_usuario']
+            return redirect(url_for('/'))
+
         return render_template('login.html')
     else:
         return render_template('login.html')
