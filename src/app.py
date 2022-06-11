@@ -1,10 +1,8 @@
 import functools
-from re import X
 from flask import Flask, jsonify, redirect, render_template, request, flash, session, url_for, g
 import cx_Oracle
 from cryptography.fernet import Fernet
 from werkzeug.security import generate_password_hash, check_password_hash
-
 
 
 
