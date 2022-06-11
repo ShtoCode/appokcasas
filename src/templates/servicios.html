@@ -1,0 +1,52 @@
+{% extends './layout.html' %} {% block title %}OkCasas - Servicios{% endblock %}
+{% block body %}
+
+
+<div class="container-fluid">
+  <div class="contenido-servicios">
+    <div class="titulo-servicios">
+      <h2>¿Que servicio necesitas?</h2>
+    </div>
+    <div class="servicios">
+      <form id="servicios-form" name="servicios-form" action="/servicios" method="POST">
+        <ul>
+          <li>
+            <label id="lblInstalaciones" for="instalaciones"
+              >Verificación de instalaciones y terminaciones</label
+            >
+            <p>$<label id="valorInstalaciones" type="number">20000</label></p>
+            <input
+              type="checkbox"
+              name="instalaciones"
+              id="instalaciones"
+            />
+          </li>
+          <li>
+            <label id="lblMetros" for="metros"
+              >Medición de metros cuadrados de la vivienda</label
+            >
+            <p>$<label id="valorMetros" type="number">20<span>.</span>000</label></p>
+            <input type="checkbox" name="metros" id="metros" />
+          </li>
+          <li>
+            <label id="lblLuz" for="luz"
+              >Inspección de luz, instalaciones sanitarias y gas</label
+            >
+            <p>$<label id="valorLuz" type="number">30000</label></p>
+            <input type="checkbox" name="luz" id="luz" />
+          </li>
+          <li>
+            <label id="lblTermografia" for="Termografia">Termografias</label>
+            <p>$<label id="valorTermografia" type="number">40000</label></p>
+            <input type="checkbox" name="termografia" id="termografia" />
+          <li class="btn-servicios">
+            <button type="submit" >Contratar</button>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+  </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{{ url_for('static', filename='js/agregarServicio.js') }}"></script>
+{% endblock %}

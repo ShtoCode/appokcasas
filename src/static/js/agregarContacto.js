@@ -1,4 +1,3 @@
-const contactos = JSON.parse(localStorage.getItem("contactos")) || [];
 const form = document.getElementById("contacto-form");
 window.onload = () => {
   form.onsubmit = (e) => {
@@ -11,7 +10,7 @@ window.onload = () => {
 
     validarFormulario();
 
-    function validarFormulario() {
+    async function validarFormulario() {
       if (nombre.length == 0) {
         swal({
           title: "Error!",
@@ -37,9 +36,21 @@ window.onload = () => {
           icon: "error",
         });
       } else {
-        contactos.push(nombre, apellido, email, mensaje);
-        const contactoValue = JSON.stringify(contactos);
-        localStorage.setItem("contactos", contactoValue)
+        const response = await fetch("/registrar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nombre,
+            apellido,
+            email,
+            mensaje,
+          }),
+        });
+        const data = await response;
+        console.log(data)
+
         swal({
           title: "Contacto enviado",
           text: "El formulario ha sido enviado, gracias por contactarnos!",

@@ -7,13 +7,7 @@ html body {
   margin: 0;
   padding: 0;
   height: 100vh;
-}
-
-.parent {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  flex-direction: column;
+  
   background: rgb(0, 212, 255);
   background: linear-gradient(
     180deg,
@@ -23,6 +17,13 @@ html body {
     rgba(2, 0, 36, 1) 100%
   );
   background-attachment: fixed;
+}
+
+.parent {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -45,7 +46,7 @@ nav {
 
 /*SERVICIO*/
 .contenido-servicios {
-  margin-top: 90px;
+  margin-top: 0px;
   padding: 50px;
   color: rgba(255, 255, 255, 0.564);
   display: flex;
@@ -53,7 +54,9 @@ nav {
   flex-direction: column;
 }
 
-.titulo-servicios {
+.contenido-servicios h2{
+  font-weight: 900;
+  font-size: 50px;
   margin-top: 20px;
   text-align: center;
 }
@@ -62,17 +65,41 @@ nav {
 .servicios {
   margin-top: 100px;
   padding: 60px;
-  background-color: rgba(255, 255, 255, 0.564);
+  background-color: rgba(188, 188, 188, 0.64);
   text-align: center;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 .servicios li {
   list-style: none;
-  text-align: start;
+  background: rgba(84, 125, 134, 0.4);
+  border: 3px coral;
+  display: flex;
+  padding: 20px;
+  margin: 10px;
+  width: 550px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.servicios li label{
+  margin-left: 4px;
+  align-items: center;
+}
+
+.servicios li #lblTermografia{
+  width: 100px;
+  margin-right: 220px;
+  align-items: center;
+}
+
+.servicios li input{
+  -ms-flex-item-align: end;
+  justify-content: center !important;
 }
 
 .servicios button {
   margin-top: 30px;
+  flex: 2;
   padding: 8px;
   background-color: rgb(49, 136, 173);
   justify-content: center;

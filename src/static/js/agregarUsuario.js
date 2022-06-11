@@ -38,7 +38,7 @@ window.onload = () => {
           icon: "error",
         });
       } else {
-        const response = await fetch("/api/users", {
+        const response = await fetch("/registrar", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -58,6 +58,8 @@ window.onload = () => {
           title: "Usuario registrado!",
           text: "El usuario ha sido registrado con exito.",
           icon: "success",
+        }).then(function (){
+            window.location.href = 'login'
         });
       }
     }
