@@ -1,0 +1,25 @@
+{% extends './layout.html' %}
+{% block title %}OkCasas - Seguimiento {% endblock %}
+{% block body %}
+<div class="contenido-seguimiento">
+    <div class="titulo-seguimiento">
+      <h2>Sigue el proceso de tu inspección</h2>
+    </div>
+    <div class="seguimiento">
+      <form name="form-seguimiento" action="/seguimiento" method="POST">
+
+        <ul>
+          <li>
+            <label for="email-login">Id de seguimiento</label>
+            <input type="number" name="id-seguimiento" id="id-seguimiento" required oninvalid="setCustomValidity('Porfavor ingresa el id de los servicios contratados')" />
+            </label>
+          </li>
+          <li class="btn-seguimiento">
+            <button type="submit">Ver Seguimiento</button>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
